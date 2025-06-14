@@ -1,0 +1,98 @@
+@if (roll && roll.length > 0) {
+<div style="margin-top: 100px !important">
+  <a
+    class="d-block bg-info text-white text-decoration-none text-center py-2 my-4 mx-auto rounded-3 shadow-sm"
+    style="width: 10%"
+    routerLink="/albums"
+    >Back to Albums</a
+  >
+</div>
+
+@for (r of roll; track $index) { @if (r.albumId === id) {
+<div
+  class="gallery-viewer d-flex flex-column align-items-center justify-content-center py-5"
+>
+  <div
+    class="gallery-image-nav d-flex align-items-center justify-content-center gap-4 mb-4"
+  >
+    <button
+      class="btn btn-info btn-gallery-nav"
+      [disabled]="currentIndex === 0"
+      (click)="prevImage()"
+      aria-label="Precedente"
+    >
+      <i class="bi bi-chevron-left fs-3"></i>
+    </button>
+    <div class="gallery-image-box position-relative">
+      <img
+        style="max-height: 600px; max-width: 800px"
+        [src]="r.roll[currentIndex].url"
+        [alt]="r.roll[currentIndex].title"
+        class="gallery-main-img rounded-4 shadow"
+        (error)="onImgError($event)"
+      />
+      <div
+        class="gallery-overlay position-absolute bottom-0 start-0 w-100 px-4 py-3 d-flex flex-column align-items-start"
+      >
+        <div class="fs-4 fw-bold text-white text-shadow">
+          {{ r.roll[currentIndex].title }}
+        </div>
+        <div class="fs-6 text-white-50 text-shadow">
+          #{{ r.roll[currentIndex].id }}
+        </div>
+      </div>
+    </div>
+    <button
+      class="btn btn-info btn-gallery-nav"
+      [disabled]="currentIndex === r.roll.length - 1"
+      (click)="nextImage(r.roll.length)"
+      aria-label="Successivo"
+    >
+      <i class="bi bi-chevron-right fs-3"></i>
+    </button>
+  </div>
+  <div class="d-flex gap-2 justify-content-center">
+    @for (item of r.roll; let idx = $index; track idx) {
+    <img
+      [src]="item.thumbnailUrl"
+      [alt]="item.title"
+      class="gallery-thumb-mini rounded-3 shadow-sm"
+      [class.active-thumb]="idx === currentIndex"
+      (click)="goToImage(idx)"
+      style="
+        width: 48px;
+        height: 36px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #eaf8fc;
+      "
+      (error)="onImgError($event)"
+    />
+    }
+  </div>
+</div>
+} } } @else {
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="min-height: 300px; margin-top: 100px !important"
+>
+  <div
+    class="card shadow border-0 rounded-4 p-4 d-flex flex-column align-items-center"
+    style="background: rgba(13, 202, 240, 0.12); min-width: 320px"
+  >
+    <div
+      class="spinner-grow text-info mb-3"
+      style="width: 3rem; height: 3rem"
+      role="status"
+    >
+      <span class="visually-hidden">Caricamento...</span>
+    </div>
+    <div
+      class="text-white fw-semibold fs-5 text-center"
+      style="text-shadow: 1px 1px 5px black"
+    >
+      Stiamo recuperando le tue foto...
+    </div>
+  </div>
+</div>
+}

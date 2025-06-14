@@ -1,0 +1,76 @@
+<div
+  class="container rounded-4 p-4 shadow my-4"
+  style="
+    background-color: rgba(13, 202, 240, 0.171);
+    margin-top: 100px !important;
+  "
+>
+  <h1
+    class="text-white shadow bg-info mt-5 px-2 rounded-4"
+    style="text-shadow: 1px 1px 5px black"
+  >
+    I tuoi album
+  </h1>
+  @if (albums && albums.length > 0) {
+  <div
+    class="album-list row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-4 justify-content-center"
+  >
+    @for (album of albums; track album.id) {
+    <div class="col d-flex justify-content-center">
+      <div
+        class="card h-100 shadow border-0 rounded-4 overflow-hidden album-card mx-auto"
+        [routerLink]="['/roll', album.id]"
+      >
+        <div class="album-img-wrapper position-relative">
+          <img
+            [src]="album.url"
+            [alt]="album.title"
+            class="card-img-top img-fluid album-img"
+            loading="lazy"
+            (error)="onImgError($event)"
+          />
+          <div
+            class="album-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end p-2"
+            style="
+              background: linear-gradient(
+                180deg,
+                rgba(13, 202, 240, 0) 40%,
+                rgba(13, 202, 240, 0.7) 100%
+              );
+            "
+          >
+            <h5 class="card-title text-white text-shadow m-0">
+              {{ album.title }}
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div
+    class="d-flex justify-content-center align-items-center"
+    style="min-height: 300px; margin-top: 100px !important"
+  >
+    <div
+      class="card shadow border-0 rounded-4 p-4 d-flex flex-column align-items-center"
+      style="background: rgba(13, 202, 240, 0.12); min-width: 320px"
+    >
+      <div
+        class="spinner-grow text-info mb-3"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      >
+        <span class="visually-hidden">Caricamento...</span>
+      </div>
+      <div
+        class="text-white fw-semibold fs-5 text-center"
+        style="text-shadow: 1px 1px 5px black"
+      >
+        Stiamo recuperando i tuoi album...
+      </div>
+    </div>
+  </div>
+  }
+</div>

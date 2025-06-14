@@ -1,0 +1,50 @@
+<nav
+  class="navbar navbar-expand-lg navbar-info bg-info px-3"
+  style="position: fixed; top: 0; width: 100%; z-index: 1000"
+>
+  <a
+    class="navbar-brand d-flex align-items-center text-white"
+    href="#"
+    style="text-shadow: 1px 1px 5px black"
+  >
+    <i class="bi bi-camera2 me-2 fs-3"></i>
+    <span class="fw-bold">ViaggiPhoto</span>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#mainNavbar"
+    aria-controls="mainNavbar"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a
+          class="nav-link text-white"
+          style="text-shadow: 1px 1px 5px black"
+          routerLink="/"
+          [ngClass]="{ 'nav-active': clicked === 'Home' }"
+          (click)="onNavClick('Home')"
+        >
+          <i class="bi bi-house-door"></i> Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-white"
+          style="text-shadow: 1px 1px 5px black"
+          routerLink="/albums"
+          [ngClass]="{ 'nav-active': clicked === 'Album' }"
+          (click)="onNavClick('Album')"
+        >
+          <i class="bi bi-images"></i> Album
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

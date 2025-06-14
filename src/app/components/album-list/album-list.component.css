@@ -1,0 +1,31 @@
+.album-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 1.5rem;
+  }
+  .album-card:hover {
+    transform: translateY(-4px) scale(1.025);
+    box-shadow: 0 10px 32px 0 rgba(13, 202, 240, 0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+  }
+  .album-img-wrapper {
+    height: 220px;
+    overflow: hidden;
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+  .album-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: scale 0.3s;
+  }
+  .album-card:hover .album-img {
+    scale: 1.06;
+  }
+  .album-overlay {
+    border-radius: 0 0 1.5rem 1.5rem;
+    min-height: 60px;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .text-shadow {
+    text-shadow: 1px 1px 10px #088ba1, 0 2px 8px rgba(0,0,0,0.38);
+  }
