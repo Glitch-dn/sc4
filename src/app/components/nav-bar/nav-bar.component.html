@@ -28,7 +28,7 @@
           class="nav-link text-white"
           style="text-shadow: 1px 1px 5px black"
           routerLink="/"
-          [ngClass]="{ 'nav-active': clicked === 'Home' }"
+          [ngClass]="{ 'nav-active': router.url === '/' }"
           (click)="onNavClick('Home')"
         >
           <i class="bi bi-house-door"></i> Home
@@ -39,7 +39,7 @@
           class="nav-link text-white"
           style="text-shadow: 1px 1px 5px black"
           routerLink="/albums"
-          [ngClass]="{ 'nav-active': clicked === 'Album' }"
+          [ngClass]="{ 'nav-active': router.url === '/albums' }"
           (click)="onNavClick('Album')"
         >
           <i class="bi bi-images"></i> Album

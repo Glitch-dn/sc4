@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 })
 export class NavBarComponent {
   clicked: string = '';
+
+  constructor(public router: Router) {}
 
   onNavClick(link: string) {
     this.clicked = link;
